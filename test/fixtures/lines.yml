@@ -1,0 +1,17 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  lineable: one
+  lineable_type: Lineable
+  description: MyString
+  quantity: 1
+  unit_price: 9.99
+  total_price: 9.99
+
+two:
+  lineable: two
+  lineable_type: Lineable
+  description: MyString
+  quantity: 1
+  unit_price: 9.99
+  total_price: 9.99

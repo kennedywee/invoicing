@@ -1,0 +1,32 @@
+<div id="<%= dom_id line %>">
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Lineable:</strong>
+    <%= line.lineable_id %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Description:</strong>
+    <%= line.description %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Quantity:</strong>
+    <%= line.quantity %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Unit price:</strong>
+    <%= line.unit_price %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Total price:</strong>
+    <%= line.total_price %>
+  </p>
+
+  <% if action_name != "show" %>
+    <%= link_to "Show this line", line, class: "rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
+    <%= link_to "Edit this line", edit_line_path(line), class: "rounded-lg py-3 ml-2 px-5 bg-gray-100 inline-block font-medium" %>
+    <hr class="mt-6">
+  <% end %>
+</div>
