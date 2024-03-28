@@ -1,4 +1,4 @@
-<%= form_with(model: quotation, class: "contents") do |form| %>
+<%= form_with model: quotation, class: "contents", data: { controller: 'nested-form', nested_form_wrapper_selector_value: '.nested-form-wrapper' } do |form| %>
   <% if quotation.errors.any? %>
     <div id="error_explanation" class="bg-red-50 text-red-500 px-3 py-2 font-medium rounded-lg mt-3">
       <h2><%= pluralize(quotation.errors.count, "error") %> prohibited this quotation from being saved:</h2>
@@ -35,6 +35,21 @@
     <%= form.label :due_at %>
     <%= form.date_field :due_at, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
   </div>
+
+  <template data-nested-form-target="template">
+    <%= form.fields_for :lines, Line.new, child_index: 'NEW_RECORD' do |line_fields| %>
+      <%= render "line_form", form: line_fields %>
+    <% end %>
+  </template>
+
+  <%= form.fields_for :lines do |line_fields| %>
+    <%= render "line_form", form: line_fields %>
+  <% end %>
+
+  <!-- Inserted elements will be injected before that target. -->
+  <div data-nested-form-target="target"></div>
+
+  <button type="button" data-action="nested-form#add" class="rounded-lg py-3 px-5 bg-blue-500 text-white inline-block font-medium cursor-pointer mr-2">Add items</button>
 
   <div class="inline">
     <%= form.submit class: "rounded-lg py-3 px-5 bg-blue-600 text-white inline-block font-medium cursor-pointer" %>

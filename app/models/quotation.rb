@@ -1,7 +1,7 @@
 class Quotation < ApplicationRecord
   belongs_to :customer
   has_many :lines, as: :lineable
-  accepts_nested_attributes_for :lines, allow_destroy: true
+  accepts_nested_attributes_for :lines, reject_if: :all_blank, allow_destroy: true
 
   enum :status, %w[draft sent rejected accepted], default: :draft
 
