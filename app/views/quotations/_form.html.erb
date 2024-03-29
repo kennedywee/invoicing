@@ -12,28 +12,28 @@
   <% end %>
 
   <div class="my-5">
-    <%= form.label :customer_id %>
-    <%= form.select :customer_id, Customer.all.collect { |c| [c.name, c.id] }, { include_blank: 'Please select customer' }, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+    <%= form.label :customer_id, class: "label" %>
+    <%= form.select :customer_id, Customer.all.collect { |c| [c.name, c.id] }, { include_blank: 'Please select customer' }, class: "input input-primary input-bordered w-full max-w-xs" %>
   </div>
 
   <div class="my-5">
-    <%= form.label :number %>
-    <%= form.text_field :number, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+    <%= form.label :number, class: "label" %>
+    <%= form.text_field :number, class: "input input-primary input-bordered w-full max-w-xs" %>
   </div>
 
   <div class="my-5">
-    <%= form.label :status %>
-    <%= form.select :status, Quotation.statuses.keys.map { |status| [status.titleize, status] }, {}, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+    <%= form.label :status, class: "label" %>
+    <%= form.select :status, Quotation.statuses.keys.map { |status| [status.titleize, status] }, {}, class: "input input-primary input-bordered w-full max-w-xs" %>
   </div>
 
   <div class="my-5">
-    <%= form.label :issue_at %>
-    <%= form.date_field :issue_at, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+    <%= form.label :issue_at , class: "label" %>
+    <%= form.date_field :issue_at, class: "input input-primary input-bordered w-full max-w-xs" %>
   </div>
 
   <div class="my-5">
-    <%= form.label :due_at %>
-    <%= form.date_field :due_at, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+    <%= form.label :due_at , class: "label" %>
+    <%= form.date_field :due_at, class: "input input-primary input-bordered w-full max-w-xs" %>
   </div>
 
   <template data-nested-form-target="template">
@@ -49,9 +49,9 @@
   <!-- Inserted elements will be injected before that target. -->
   <div data-nested-form-target="target"></div>
 
-  <button type="button" data-action="nested-form#add" class="rounded-lg py-3 px-5 bg-blue-500 text-white inline-block font-medium cursor-pointer mr-2">Add items</button>
+  <button type="button" data-action="nested-form#add" class="btn btn-secondary">Add items</button>
 
   <div class="inline">
-    <%= form.submit class: "rounded-lg py-3 px-5 bg-blue-600 text-white inline-block font-medium cursor-pointer" %>
+    <%= form.submit class: "btn btn-primary" %>
   </div>
 <% end %>
