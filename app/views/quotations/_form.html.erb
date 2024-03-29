@@ -42,12 +42,17 @@
     <% end %>
   </template>
 
-  <%= form.fields_for :lines do |line_fields| %>
-    <%= render "line_form", form: line_fields %>
-  <% end %>
+  <ul data-controller="sortable" data-sortable-animation-value="150" data-sortable-handle-value=".handle">
+    <%= form.fields_for :lines do |line_fields| %>
+      <%= render "line_form", form: line_fields %>
+    <% end %>
+  </ul>
 
   <!-- Inserted elements will be injected before that target. -->
-  <div data-nested-form-target="target"></div>
+  <ul data-controller="sortable" data-sortable-animation-value="150" data-sortable-handle-value=".handle">
+    <div data-nested-form-target="target"></div>
+  </ul>
+
 
   <button type="button" data-action="nested-form#add" class="btn btn-secondary">Add items</button>
 

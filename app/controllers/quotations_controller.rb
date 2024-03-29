@@ -54,6 +54,6 @@ class QuotationsController < ApplicationController
   # Only allow a list of trusted parameters through.
   def quotation_params
     params.require(:quotation).permit(:customer_id, :number, :status, :issue_at, :due_at,
-                                      lines_attributes: %i[id lineable_type lineable_id description quantity unit_price total_price _destroy])
+                                      lines_attributes: %i[id lineable_type lineable_id description quantity unit_price total_price _destroy position])
   end
 end
