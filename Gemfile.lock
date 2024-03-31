@@ -79,9 +79,6 @@ GEM
       activerecord (>= 4.2)
     addressable (2.8.6)
       public_suffix (>= 2.0.2, < 6.0)
-    annotate (3.2.0)
-      activerecord (>= 3.2, < 8.0)
-      rake (>= 10.4, < 14.0)
     base64 (0.2.0)
     bcrypt (3.1.20)
     bigdecimal (3.1.7)
@@ -125,6 +122,10 @@ GEM
     irb (1.12.0)
       rdoc
       reline (>= 0.4.2)
+    launchy (2.5.2)
+      addressable (~> 2.8)
+    letter_opener (1.9.0)
+      launchy (>= 2.2, < 3)
     loofah (2.22.0)
       crass (~> 1.0.2)
       nokogiri (>= 1.12.0)
@@ -284,12 +285,12 @@ PLATFORMS
 
 DEPENDENCIES
   acts_as_list (~> 1.1)
-  annotate
   bootsnap
   capybara
   debug
   devise (~> 4.9)
   importmap-rails
+  letter_opener
   pg (~> 1.1)
   puma (>= 5.0)
   rack-mini-profiler
