@@ -10,7 +10,17 @@ Rails.application.routes.draw do
              path_names: {
                sign_in: 'login',
                sign_out: 'logout',
-               sign_up: 'register'
+               sign_up: 'register',
+               password: 'forgot'
+             }
+
+  devise_for :admins,
+             path: 'admin',
+             path_names: {
+               sign_in: 'login',
+               sign_out: 'logout',
+               sign_up: 'register',
+               password: 'forgot'
              }
 
   namespace :main do
