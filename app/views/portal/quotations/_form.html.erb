@@ -1,0 +1,62 @@
+<%= form_with model: quotation, class: "contents", data: { controller: 'nested-form', nested_form_wrapper_selector_value: '.nested-form-wrapper' } do |form| %>
+  <% if quotation.errors.any? %>
+    <div id="error_explanation" class="bg-red-50 text-red-500 px-3 py-2 font-medium rounded-lg mt-3">
+      <h2><%= pluralize(quotation.errors.count, "error") %> prohibited this quotation from being saved:</h2>
+
+      <ul>
+        <% quotation.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="my-5">
+    <%= form.label :customer_id, class: "label" %>
+    <%= form.select :customer_id, Customer.all.collect { |c| [c.name, c.id] }, { include_blank: 'Please select customer' }, class: "input input-primary input-bordered w-full max-w-xs" %>
+  </div>
+
+  <div class="my-5">
+    <%= form.label :number, class: "label" %>
+    <%= form.text_field :number, class: "input input-primary input-bordered w-full max-w-xs" %>
+  </div>
+
+  <div class="my-5">
+    <%= form.label :status, class: "label" %>
+    <%= form.select :status, Quotation.statuses.keys.map { |status| [status.titleize, status] }, {}, class: "input input-primary input-bordered w-full max-w-xs" %>
+  </div>
+
+  <div class="my-5">
+    <%= form.label :issue_at , class: "label" %>
+    <%= form.date_field :issue_at, class: "input input-primary input-bordered w-full max-w-xs" %>
+  </div>
+
+  <div class="my-5">
+    <%= form.label :due_at , class: "label" %>
+    <%= form.date_field :due_at, class: "input input-primary input-bordered w-full max-w-xs" %>
+  </div>
+
+  <template data-nested-form-target="template">
+    <%= form.fields_for :lines, Line.new, child_index: 'NEW_RECORD' do |line_fields| %>
+      <%= render "line_form", form: line_fields %>
+    <% end %>
+  </template>
+
+  <ul data-controller="sortable" data-sortable-animation-value="150" data-sortable-handle-value=".handle">
+    <%= form.fields_for :lines do |line_fields| %>
+      <%= render "line_form", form: line_fields %>
+    <% end %>
+  </ul>
+
+  <!-- Inserted elements will be injected before that target. -->
+  <ul data-controller="sortable" data-sortable-animation-value="150" data-sortable-handle-value=".handle">
+    <div data-nested-form-target="target"></div>
+  </ul>
+
+
+  <button type="button" data-action="nested-form#add" class="btn btn-secondary">Add items</button>
+
+  <div class="inline">
+    <%= form.submit class: "btn btn-primary" %>
+  </div>
+<% end %>

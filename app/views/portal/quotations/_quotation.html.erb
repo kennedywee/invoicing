@@ -1,0 +1,32 @@
+<div id="<%= dom_id quotation %>">
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Customer:</strong>
+    <%= quotation.customer.name %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Number:</strong>
+    <%= quotation.number %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Status:</strong>
+    <%= quotation.status %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Issue at:</strong>
+    <%= quotation.issue_at %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Due at:</strong>
+    <%= quotation.due_at %>
+  </p>
+
+  <% if action_name != "show" %>
+    <%= link_to "Show this quotation", quotation, class: "btn" %>
+    <%= link_to "Edit this quotation", edit_quotation_path(quotation), class: "btn" %>
+    <hr class="mt-6">
+  <% end %>
+</div>
