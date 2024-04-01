@@ -13,12 +13,14 @@ Rails.application.routes.draw do
                sign_up: 'register'
              }
 
+  namespace :main do
+    root 'posts#index'
+    resources :posts
+  end
+
   namespace :portal do
     root 'quotations#index'
     resources :quotations
-  end
-
-  namespace :public do
   end
 
   namespace :admin do
