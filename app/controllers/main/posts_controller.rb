@@ -1,4 +1,4 @@
-class Main::PostsController < ApplicationController
+class Main::PostsController < MainController
   before_action :set_post, only: %i[show edit update destroy]
 
   # GET /posts

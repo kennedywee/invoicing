@@ -1,4 +1,4 @@
-class Portal::QuotationsController < PublicController
+class Portal::QuotationsController < PortalController
   before_action :set_quotation, only: %i[show edit update destroy]
 
   # GET /quotations
